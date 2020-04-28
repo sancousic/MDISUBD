@@ -1,0 +1,53 @@
+﻿USE `Hospital`;
+DROP procedure IF EXISTS `registration_procedure`;
+
+DELIMITER $$
+USE `Hospital`$$
+CREATE DEFINER=`student`@`%` PROCEDURE `registration_procedure`(IN n1 varchar(45),
+										   IN n2 varchar(100),
+                                           IN n3 varchar(38),
+                                           IN log varchar(45),
+                                           IN pass varchar(100),
+                                           IN rol int)
+BEGIN
+	declare is_login int;
+    declare is_n1 int;
+    declare is_n2 int;
+    declare is_n3 int;
+	declare id_n1 int;
+    declare id_n2 int;
+    declare id_n3 int;
+    
+    set is_login = (select users.id from users where users.login = log);
+    set is_n1 = (select names1.id from names1 where names1.name1 = n1);
+    set is_n2 = (select names2.id from names2 where names2.name2 = n2);
+    set is_n3 = (select names3.id from names3 where names3.name3 = n3);
+    
+    if is_n1 is null then
+		insert into names1 (name1)
+        values (n1);
+	end if;
+    
+    if is_n2 is null then
+		insert into names2 (name2)
+        values (n2);
+	end if;
+    
+    if is_n3 is null then
+		insert into names3 (name3)
+        values (n3);
+	end if;
+    
+    set id_n1 = (select names1.id from names1 where names1.name1 = n1);
+    set id_n2 = (select names2.id from names2 where names2.name2 = n2);
+    set id_n3 = (select names3.id from names3 where names3.name3 = n3);
+    
+    if is_login is null then
+		insert into users (users.login, users.password_hash, users.role, create_time,
+						   users.name1_id, users.name2_id,	users.name3_id)
+					values (log, SHA1(pass), rol, now(), id_n1, id_n2, id_n3);
+	end if;
+    
+END$$
+
+DELIMITER ;

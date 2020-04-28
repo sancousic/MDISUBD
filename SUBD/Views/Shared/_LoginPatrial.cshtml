@@ -1,0 +1,22 @@
+﻿@inject AuthorizedUser authorizedUser
+
+
+    <ul class="navbar-nav">
+        @if (authorizedUser.Id == -1)
+        {
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="register" asp-action="Registration" asp-controller="User">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="login" asp-action="Login" asp-controller="User">Login</a>
+            </li>
+
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="quit" asp-action="Logout" asp-controller="User">Выйти</a>
+            </li>
+        }
+    </ul>

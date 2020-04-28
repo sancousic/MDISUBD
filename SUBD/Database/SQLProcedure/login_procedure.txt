@@ -1,0 +1,13 @@
+﻿CREATE DEFINER=`student`@`%` PROCEDURE `authorization_procedure`(in login varchar(45),
+											in pswd varchar(45))
+BEGIN
+	select id, login, users.role, blocked_from, block_time, block_status, create_time, data_id, names1.name1 as 'name1', names2.name2 as 'name2', names3.name3 as 'name3'
+    from (select users where users.login = login and users.password = SHA1(pswd))
+    inner join names1 on names1.id = users.name1_id
+	inner join names1 on names2.id = users.name2_id
+	inner join names1 on names2.id = users.name2_id;
+    insert into journal (journal.user_id, journal.tine)
+				values ((select users.id from users where users.login = login), now());
+END
+
+20:09:01	Apply changes to authorization_procedure	Error 1248: Every derived table must have its own alias SQL Statement:  CREATE DEFINER=`student`@`%` PROCEDURE `authorization_procedure`(in login varchar(45),                 in pswd varchar(45)) BEGIN select id, login, users.role, blocked_from, block_time, block_status, create_time, data_id, names1.name1 as 'name1', names2.name2 as 'name2', names3.name3 as 'name3'     from (select users where users.login = login and users.password = SHA1(pswd))     inner join names1 on names1.id = users.name1_id  inner join names1 on names2.id = users.name2_id  inner join names1 on names2.id = users.name2_id; END  	

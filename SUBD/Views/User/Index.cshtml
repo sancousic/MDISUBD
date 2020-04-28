@@ -1,0 +1,38 @@
+﻿@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>Пользователи</h4>
+<br />
+
+<table class="table">
+    <tr>
+        <th>id</th><th>Login</th><th>Имя</th><th>Фамилия</th><th>Отчество</th><th>Роль</th><th>Статус блокировки</th><th>Время блокировки</th>
+        <th>Дата создания</th>
+    </tr>
+    @foreach(var user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Login</td>
+            <td>@user.Name1</td>
+            <td>@user.Name2</td>
+            <td>@user.Name3</td>
+            <td>@user.Role</td>
+            <td>@user.BlockedStatus</td>
+            <td>@user.BlockedTime</td>
+            <td>@user.CreatedTime</td> 
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="btn-group">
+                    <a type="button" class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" asp-route-login="@user.Login">Удалить</a>
+                    <a type="button" class="btn btn-light" asp-controller="User" asp-action="Edit" asp-route-login="@user.Login">Редактировать</a>
+                    <a type="button" class="btn btn-light" asp-controller="User" asp-action="Details" asp-route-id="@user.Id">Информация</a>
+                    <a type="button" class="btn btn-danger" asp-controller="User" asp-action="Details" asp-route-id="@user.Id">Заблокировать</a>
+                </div>
+            </td>
+        </tr>
+    }
+</table>

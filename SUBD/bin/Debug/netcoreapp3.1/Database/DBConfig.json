@@ -1,0 +1,9 @@
+{
+  "Host": "192.168.10.128",
+  "Port": "3408",
+  "User": "student",
+  "Password": "student",
+  "Database": "Hospital",
+  "Charset": "utf8mb4",
+  "AllowUserVariables":  "True"
+}

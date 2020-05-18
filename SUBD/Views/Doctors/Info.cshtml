@@ -1,0 +1,117 @@
+﻿@model DoctorViewModel
+@{
+    ViewData["Title"] = "Персонал";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>@Model.Name1 @Model.Name2 @Model.Name3</h4>
+<br />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Branch)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Branch)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spec)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spec)
+        </dd>
+    </dl>
+    <h6>Контактные данные</h6>
+    <br />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+    </dl>
+    <h6>Паспортные данные</h6>
+    <br />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Authority)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Authority)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date6)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date6)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genger)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genger)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Series)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Series)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Identity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Identity)
+        </dd>
+    </dl>
+</div>

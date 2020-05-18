@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Schedule>
+@{
+    ViewData["Title"] = "Персонал";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>График работы </h4>
+<br />
+<table class="table">
+    <tr>
+        <th>День</th>
+        <th>Время</th>
+        <th>Продолжительность</th>
+        <th>Кабинет</th>
+    </tr>
+    @foreach (var sch in Model)
+    {
+        <tr>
+            <td>@sch.Day</td>
+            <td>@sch.Time</td>
+            <td>@sch.Duration</td>
+            <td>@sch.CabinetId @sch.Cabinet</td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="btn-group">
+                    <a class="btn btn-danger" asp-action="DeleteSchedule" asp-route-id="@sch.Id" asp-route-d_id="@ViewBag.Id">Удадить</a>
+                    <a class="btn btn-light" asp-action="AddTicket" asp-route-id="@sch.Id" asp-route-d_id="@ViewBag.Id">Записаться</a>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+<div class="btn-group">
+    <a class="btn btn-primary" asp-action="AddSchedule" asp-route-id="@ViewBag.Id">Добавить</a>
+    <a class="btn btn-primary" asp-action="SchStats">Статистика</a>   
+</div>

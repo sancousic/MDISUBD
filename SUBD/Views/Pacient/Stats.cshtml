@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CardStatsViewModel>
+@{
+    ViewData["Title"] = "Карта";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Статистика заболеваний с @ViewBag.Min по @ViewBag.Max</h4>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Stats" method="post" asp-controller="Pacient">
+            <div class="form-group">
+                <p>
+                    <input type="search" name="_str" placeholder="Поиск">
+                    <input type="submit" value="Найти">
+                </p>
+                <input type="datetime" name="min" value="@ViewBag.Min" />
+                <input type="datetime" name="max" value="@ViewBag.Max" />
+            </div>
+        </form>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>Заболевание</th>
+        <th>Количество</th>
+    </tr>
+    @foreach (var card in Model)
+    {
+        <tr>
+            <td>@card.Type</td>
+            <td>@card.Count</td>
+        </tr>
+    }
+</table>
+<a class="btn btn-primary" asp-action="Index">Назад</a>

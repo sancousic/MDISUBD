@@ -1,0 +1,63 @@
+﻿@model PacientSearchViewModel
+@{
+    ViewData["Title"] = "Поиск пациента";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Поиск пациентов</h4>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Search" method="post" asp-controller="Pacient">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name1" class="control-label"></label>
+                <input asp-for="name1" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="name2" class="control-label"></label>
+                <input asp-for="name2" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="name3" class="control-label"></label>
+                <input asp-for="name3" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Region" class="control-label"></label>
+                <input asp-for="Region" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <input asp-for="District" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Town" class="control-label"></label>
+                <input asp-for="Town" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="HomeNumber" class="control-label"></label>
+                <input asp-for="HomeNumber" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <label asp-for="HomeIndex" class="control-label"></label>
+                <input asp-for="HomeIndex" class="form-control" value="" />
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <input type="submit" asp-action="Search"
+                           class="btn btn-primary" value="Сохранить" />
+                    <a asp-action="Index" class="btn btn-dark">Отмена</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

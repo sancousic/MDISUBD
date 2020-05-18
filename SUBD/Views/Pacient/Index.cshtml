@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Pacient>
+@{
+    ViewData["Title"] = "Пациенты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Пациенты</h4>
+<br />
+<a type="button" class="btn btn-light" asp-controller="Pacient" asp-action="Search">Найти</a>
+<a type="button" class="btn btn-light" asp-controller="Pacient" asp-action="Stats">Статистика заболеваний</a>
+<table class="table">
+    <tr>
+        <th>Имя</th>
+        <th>Фимилия</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+        <th>Почта</th>
+        <th>Место жительства</th>
+    </tr>
+    @foreach (var pacient in Model)
+    {
+        <tr>
+            <td>@pacient.Name1</td>
+            <td>@pacient.Name2</td>
+            <td>@pacient.Name3</td>
+            <td>@pacient.Phone</td>
+            <td>@pacient.Mail</td>
+            <td>@pacient.Country, @pacient.Region, @pacient.District, @pacient.Town, @pacient.Street, д @pacient.HomeNumber @pacient.HomeIndex</td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="btn-group">
+                    <a class="btn btn-primary" asp-action="Card" asp-route-id="@pacient.Id">Карточка</a>
+                </div>
+            </td>
+        </tr>
+    }
+</table>

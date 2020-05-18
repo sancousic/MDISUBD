@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Ticket>
+@{
+    ViewData["Title"] = "Талоны";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Талоны</h4>
+<br />
+
+<table class="table">
+    <tr>
+        <th>Доктор</th>
+        <th>Дата</th>
+        <th>Время</th>
+        <th>Продолжительность</th>
+        <th>Кабинет</th>
+    </tr>
+    @foreach (var ticket in Model)
+    {
+        <tr>
+            <td>@ticket.Name1 @ticket.Name2 @ticket.Name3</td>
+            <td>@ticket.Date</td>
+            <td>@ticket.Time</td>
+            <td>@ticket.Duration</td>
+            <td>@ticket.CabinetId @ticket.Cabinet</td>
+            
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="btn-group">
+                    <a class="btn btn-danger" asp-action="AbortTicket" asp-route-id="@ticket.Id">Отменить</a>
+                </div>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,49 @@
+﻿@model AddScheduleViewModel
+@{
+    ViewData["Title"] = "Редактировать";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>Добавить работу</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddSchedule" method="post" asp-controller="Doctors">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DocId" />
+            <div class="form-group">
+                <label asp-for="Cabinet" class="control-label"></label>
+                <input asp-for="Cabinet" class="form-control" />
+                <span asp-validation-for="Cabinet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Time" class="control-label"></label>
+                <input asp-for="Time" class="form-control" />
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Day" class="control-label"></label>
+                <select asp-for="Day">
+                    <option value="@DayOfWeek.Monday">Понедельник</option>
+                    <option value="@DayOfWeek.Tuesday">Вторник</option>
+                    <option value="@DayOfWeek.Wednesday">Среда</option>
+                    <option value="@DayOfWeek.Thursday">Четверг</option>
+                    <option value="@DayOfWeek.Friday">Пятница</option>
+                    <option value="@DayOfWeek.Saturday">Суббота</option>
+                    <option value="@DayOfWeek.Sunday">Воскресенье</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <input type="submit" asp-action="AddSchedule"
+                           class="btn btn-primary" value="Сохранить" />
+                    <a asp-action="Schedule" asp-route-id="@Model.DocId" class="btn btn-dark">Отмена</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model DoctorListViewModel
+@{
+    ViewData["Title"] = "Персонал";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Медперсонал</h4>
+<br />
+<a type="button" class="btn btn-light" asp-controller="Doctors" asp-action="Search">Найти</a>
+<table class="table">
+    <tr>
+        <th>Имя</th>
+        <th>Фимилия</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+        <th>Почта</th>
+        <th>Отделение</th>
+        <th>Направление</th>
+    </tr>
+    @foreach (var doctor in Model.Doctors)
+    {
+        <tr>
+            <td>@doctor.Name1</td>
+            <td>@doctor.Name2</td>
+            <td>@doctor.Name3</td>
+            <td>@doctor.Phone</td>
+            <td>@doctor.Mail</td>
+            <td>@doctor.Branch</td>
+            <td>@doctor.Speciality</td>
+        </tr>
+        <tr>
+            <td colspan="9">
+                <div class="btn-group">
+                    <a class="btn btn-primary" asp-action="Info" asp-route-id="@doctor.Id">Информация</a>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@doctor.Id">Изменить</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@doctor.Id">Удалить</a>
+                    <a class="btn btn-primary" asp-action="Schedule" asp-route-id="@doctor.Id">График работы</a>
+                    <a class="btn btn-primary" asp-action="Stats" asp-route-id="@doctor.Id">Статистика</a>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+<a class="btn btn-primary" asp-action="Add">добавить сотрудника</a>

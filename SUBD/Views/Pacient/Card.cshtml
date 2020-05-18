@@ -1,0 +1,123 @@
+﻿@model CardViewModel
+@{
+    ViewData["Title"] = "Карта";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Карта №@Model.Id</h4>
+<h5>@Model.Name1 @Model.Name2 @Model.Name3</h5>
+<br />
+<h5>Дата выдачи: @Model.IssueDate</h5>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Card" method="get" asp-controller="Pacient">
+            <div class="form-group">
+                <p>
+                    <input type="hidden" value="@Model.PacientId" name="id" />
+                    <input type="search" name="_str" placeholder="Поиск по карте">
+                    <input type="submit" value="Найти">
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+<h5>Аллергии</h5>
+@if (Model.Allergies.Count > 0)
+{
+    <table class="table">
+        <tr>
+            <th>Тип</th>
+            <th>Дата появления</th>
+        </tr>
+        @foreach (var allergy in Model.Allergies)
+        {
+            <tr>
+                <td>@allergy.AllergyName</td>
+                <td>@allergy.Date</td>
+            </tr>
+        }
+    </table>
+    <br />
+}
+<h5>Вакцинации</h5>
+@if (Model.Vaccinations.Count > 0)
+{
+    <table class="table">
+        <tr>
+            <th>Тип</th>
+            <th>Результат</th>
+            <th>Дата</th>
+        </tr>
+        @foreach (var vaccination in Model.Vaccinations)
+        {
+            <tr>
+                <td>@vaccination.Type</td>
+                <td>@vaccination.Result</td>
+                <td>@vaccination.Date</td>
+            </tr>
+        }
+    </table>
+}
+<a class="btn btn-primary" asp-action="AddVaccine" asp-route-id="@Model.Id">Добавить вакцину</a>
+<br />
+<h5>Посещения врача</h5>
+@if (Model.Examinations.Count > 0)
+{
+    <table class="table">
+        <tr>
+            <th>Врач</th>
+            <th>Тип</th>
+            <th>Результат</th>
+            <th>Дата</th>
+        </tr>
+        @foreach (var exam in Model.Examinations)
+        {
+            <tr>
+                <td>@exam.Name1 @exam.Name2 @exam.Name3</td>
+                <td>@exam.Type</td>
+                <td>@exam.Result</td>
+                <td>@exam.Date</td>
+            </tr>
+        }
+    </table>
+    <br />
+}
+<a class="btn btn-primary" asp-action="AddExam" asp-route-id="@Model.Id">Добавить</a>
+<h5>Диагнозы</h5>
+@if (Model.Diagnoses.Count > 0)
+{
+    <table class="table">
+        <tr>
+            <th>Врач</th>
+            <th>Диагноз</th>
+            <th>Поставлен</th>
+            <th>Статус</th>
+            <th>Подтверждено</th>
+            <th>Дата подтверждения</th>
+        </tr>
+        @foreach (var diagnose in Model.Diagnoses)
+        {
+            <tr>
+                <td>@diagnose.Name1 @diagnose.Name2 @diagnose.Name3</td>
+                <td>@diagnose.Type</td>
+                <td>@diagnose.Date</td>
+                <td>@diagnose.Status</td>
+                @if (diagnose.Status == "не подтвержден")
+                {
+                    <td><a class="btn btn-primary" asp-action="ConfirmDiagnose" asp-route-id="@Model.Id" asp-route-d_id="@diagnose.Id">Подтвердить</a></td>
+                    <td></td>
+                }
+                else
+                {
+                    <td>@diagnose.CName1 @diagnose.CName2 @diagnose.CName3</td>
+                    <td>@diagnose.Date2</td>
+                }
+            </tr>
+        }
+    </table>
+}
+<div class="btn-group">
+    <a class="btn btn-primary" asp-action="AddDiagnos" asp-route-id="@Model.Id">Добавить диагноз</a>
+</div>
